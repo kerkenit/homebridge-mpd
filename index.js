@@ -49,7 +49,7 @@ MpdAccessory.prototype.getOn = function(callback) {
     }
     else {
       var response = mpd.parseKeyValueMessage(msg);
-      var on = response.state == "play";
+      var on = (response.state == "play" || response.state == "playing");
       accessory.log("player state: %s", response.state);
       callback(null, on);
     }
