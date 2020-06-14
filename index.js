@@ -23,7 +23,7 @@ function MpdAccessory(log, config) {
     host: this.host,
   });
 
-  this.service = new Service.Switch(this.name);
+  this.service = new Service.Speaker(this.name);
 
   this.service
     .getCharacteristic(Characteristic.On)
@@ -31,7 +31,7 @@ function MpdAccessory(log, config) {
     .on('set', this.setOn.bind(this));
   
   this.service
-    .addCharacteristic(new Characteristic.Brightness())
+    .addCharacteristic(Characteristic.Volume)
     .on('get', this.getVolume.bind(this))
     .on('set', this.setVolume.bind(this));
 }
